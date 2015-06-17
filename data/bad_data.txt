@@ -1,0 +1,4 @@
+Jobs  Steve  Male  02/24/1955
+Gates | Bill | Blue | 10/28/1955
+Mayer , Marissa , Female , 05/30/1975
+  ,  Larry , Male , Green
