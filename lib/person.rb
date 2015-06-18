@@ -33,5 +33,6 @@ class Person
 
   def self.sort_by_last_name
     # sorted by last name, descending.
+    @@people.sort { |person1, person2| person2.last_name <=> person1.last_name }
   end
 end
