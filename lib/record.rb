@@ -1,8 +1,8 @@
 require 'date' # for parsing the date
 
-class Person
+class Record
   attr_accessor :first_name, :last_name, :gender, :favorite_color, :birthday
-  @@people = []
+  @@records = []
   def initialize(last_name, first_name, gender, favorite_color, birthday)
     @last_name = last_name
     @first_name = first_name
@@ -10,30 +10,30 @@ class Person
     @favorite_color = favorite_color
     @birthday = Date.strptime(birthday, "%m/%d/%Y")
 
-    @@people << self
+    @@records << self
   end
 
   def self.destroy_all!
-    @@people = []
+    @@records = []
   end
 
   def self.all
-    @@people
+    @@records
   end
 
   def self.sort_by_gender
     # sorted by gender (females before males) then by last name ascending.
-    @@people.sort_by { |person| [person.gender, person.last_name]}
+    @@records.sort_by { |person| [person.gender, person.last_name]}
   end
 
   def self.sort_by_birthday
     # sorted by birth date, ascending.
-    @@people.sort_by(&:birthday)
+    @@records.sort_by(&:birthday)
   end
 
   def self.sort_by_last_name
     # sorted by last name, descending.
-    @@people.sort { |person1, person2| person2.last_name <=> person1.last_name }
+    @@records.sort { |person1, person2| person2.last_name <=> person1.last_name }
   end
 
   def to_s

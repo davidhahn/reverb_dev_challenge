@@ -1,4 +1,4 @@
-require_relative 'person'
+require_relative 'record'
 
 module Parser
   def self.parse(text)
