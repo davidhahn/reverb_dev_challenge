@@ -1,3 +1,5 @@
+require 'date' # for parsing the date
+
 class Person
   attr_accessor :first_name, :last_name, :gender, :favorite_color, :birthday
   @@people = []
@@ -6,7 +8,7 @@ class Person
     @first_name = first_name
     @gender = gender
     @favorite_color = favorite_color
-    @birthday = birthday
+    @birthday = Date.strptime(birthday, "%m/%d/%Y")
 
     @@people << self
   end
@@ -21,10 +23,12 @@ class Person
 
   def self.sort_by_gender
     # sorted by gender (females before males) then by last name ascending.
+    @@people.sort_by { |person| [person.gender, person.last_name]}
   end
 
   def self.sort_by_birthday
     # sorted by birth date, ascending.
+    @@people.sort_by(&:birthday)
   end
 
   def self.sort_by_last_name

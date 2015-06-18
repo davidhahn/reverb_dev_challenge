@@ -15,11 +15,15 @@ class PersonTest < Minitest::Test
     Person.destroy_all!
   end
 
-  def test_person_responds_to_attributes_and_not_blank
+  def test_person_responds_to_attributes_and_not_nil
     [:last_name, :first_name, :gender, :favorite_color, :birthday].each do |attribute|
       assert_respond_to(@random, attribute)
-      refute_empty(@random.send(attribute), "#{attribute.to_s.capitalize} is empty!")
+      refute_nil(@random.send(attribute), "#{attribute.to_s.capitalize} is empty!")
     end
+  end
+
+  def test_birthday_is_in_date_format
+    assert_equal(Date, @random.birthday.class)
   end
 
   def test_retrieve_all_people
