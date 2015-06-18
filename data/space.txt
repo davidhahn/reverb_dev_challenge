@@ -1,4 +1,4 @@
-Jobs  Steve  Male  Space Gray  02/24/1955
+Jobs  Steve  Male  Space_Gray  02/24/1955
 Gates  Bill  Male  Blue  10/28/1955
 Mayer  Marissa  Female  Red  05/30/1975
 Sandberg  Sheryl  Female  Yellow  08/28/1969

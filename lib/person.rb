@@ -35,4 +35,8 @@ class Person
     # sorted by last name, descending.
     @@people.sort { |person1, person2| person2.last_name <=> person1.last_name }
   end
+
+  def to_s
+    "#{@last_name}, #{@first_name}(#{@gender}) was born on #{@birthday.strftime("%m/%d/%Y")} and likes the color #{@favorite_color}."
+  end
 end

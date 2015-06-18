@@ -10,9 +10,9 @@ class ParserTest < Minitest::Test
     # Will choose a random file
     file_name = @files.shuffle.first
 
-    file = File.open("data/#{file_name}.txt").each do |line|
+    file = File.open("data/#{file_name}.txt").each_line do |line|
       # Each dummy data file has 6 lines
-      assert_equal 5, Parser.parse(line)
+      assert_equal 5, Parser.parse(line).length
     end
     file.close
   end
@@ -23,7 +23,7 @@ class ParserTest < Minitest::Test
 
   def test_raise_an_error_if_there_are_less_than_5_elements_in_a_line
     file = File.open("data/bad_data.txt").each do |line|
-      assert_raises(Exception) { Parser.parse(line) }
+      assert_raises(RuntimeError) { Parser.parse(line) }
     end
     file.close
   end
