@@ -1,8 +1,15 @@
 require 'date' # for parsing the date
+require 'grape'
 
 class Record
   attr_accessor :first_name, :last_name, :gender, :favorite_color, :birthday
+
   @@records = []
+
+  class API < Grape::API
+
+  end
+
   def initialize(last_name, first_name, gender, favorite_color, birthday)
     @last_name = last_name
     @first_name = first_name
