@@ -11,7 +11,7 @@
 * Each record has all the fields present, and they are all in the correct fields.
 * Each record takes up 1 line.
 
-# To run the program
+# To run the program in command line
 >
-> ruby parser.rb [file_name].txt
+> ruby lib/run_challenge.rb [file_name].txt
 >
