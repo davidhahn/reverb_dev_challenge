@@ -8,23 +8,27 @@ class PersonTest < Minitest::Test
     @person3 = Person.new("Mayer", "Marissa", "Female", "Red", "05/30/1975")
     @person4 = Person.new("Sandberg", "Sheryl", "Female", "Yellow", "08/28/1969")
 
-    @people = [@person1, @person2, @person3, @person4]
-    @random = @people.shuffle.first
+    @random = [@person1, @person2, @person3, @person4].shuffle.first
   end
 
-  def test_person_responds_to_attributes
+  def teardown
+    Person.destroy_all!
+  end
+
+  def test_person_responds_to_attributes_and_not_blank
     [:last_name, :first_name, :gender, :favorite_color, :birthday].each do |attribute|
       assert_respond_to(@random, attribute)
+      refute_empty(@random.send(attribute), "#{attribute.to_s.capitalize} is empty!")
     end
   end
 
   def test_retrieve_all_people
     assert_respond_to(Person, :all)
-    assert_equal(4, Person.all)
+    assert_equal(4, Person.all.length)
   end
 
   def test_sort_by_gender_then_last_name
-    assert_equal([@person4, @person3, @person1, @person2], Person.sort_by_gender)
+    assert_equal([@person3, @person4, @person2, @person1], Person.sort_by_gender)
   end
 
   def test_sort_by_birthday
@@ -32,6 +36,6 @@ class PersonTest < Minitest::Test
   end
 
   def test_sort_by_last_name
-    assert_equal([@person4, @person3, @person1, @person1], Person.sort_by_last_name)
+    assert_equal([@person4, @person3, @person1, @person2], Person.sort_by_last_name)
   end
 end

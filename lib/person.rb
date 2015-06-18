@@ -1,5 +1,6 @@
 class Person
-  PEOPLE = []
+  attr_accessor :first_name, :last_name, :gender, :favorite_color, :birthday
+  @@people = []
   def initialize(last_name, first_name, gender, favorite_color, birthday)
     @last_name = last_name
     @first_name = first_name
@@ -7,22 +8,26 @@ class Person
     @favorite_color = favorite_color
     @birthday = birthday
 
-    PEOPLE << self
+    @@people << self
+  end
+
+  def self.destroy_all!
+    @@people = []
   end
 
   def self.all
-
+    @@people
   end
 
   def self.sort_by_gender
-
+    # sorted by gender (females before males) then by last name ascending.
   end
 
   def self.sort_by_birthday
-
+    # sorted by birth date, ascending.
   end
 
   def self.sort_by_last_name
-
+    # sorted by last name, descending.
   end
 end
